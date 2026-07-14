@@ -1,38 +1,106 @@
-const button = document.getElementById("openBtn");
-const story = document.getElementById("story");
 const hero = document.querySelector(".hero");
-const text = document.getElementById("text");
+const intro = document.getElementById("intro");
+const invite = document.getElementById("invite");
+
+const envelope = document.getElementById("openEnvelope");
+const typing = document.getElementById("typing");
+const next = document.getElementById("continue");
 
 const messages = [
-    "Мы больше не встречаемся...",
-    "Мы больше не парень и девушка...",
-    "Потому что...",
-    "МЫ ЖЕНИМСЯ! 🤍"
+"Мы больше не встречаемся...",
+"Мы больше не парень и девушка...",
+"Потому что...",
+"МЫ ЖЕНИМСЯ! 🤍"
 ];
 
-button.addEventListener("click", () => {
+let index = 0;
 
-    hero.style.display = "none";
-    story.classList.remove("hidden");
+envelope.addEventListener("click", () => {
 
-    let index = 0;
+hero.classList.add("hidden");
+intro.classList.remove("hidden");
 
-    text.innerHTML = messages[index];
+showMessage();
 
-    const interval = setInterval(() => {
+});
 
-        index++;
+function showMessage(){
 
-        if(index < messages.length){
+typing.innerHTML = messages[index];
 
-            text.innerHTML = messages[index];
+setTimeout(()=>{
 
-        }else{
+index++;
 
-            clearInterval(interval);
+if(index < messages.length){
 
-        }
+showMessage();
 
-    },2500);
+}else{
+
+intro.classList.add("hidden");
+invite.classList.remove("hidden");
+
+}
+
+},2200);
+
+}
+
+next.addEventListener("click",()=>{
+
+document.body.style.overflow="auto";
+
+invite.innerHTML=`
+
+<h2>DANIL <span>&</span> ANYA</h2>
+
+<p class="date">
+
+27 июля 2027
+
+</p>
+
+<p class="text">
+
+Мы счастливы пригласить вас
+разделить с нами
+самый важный день нашей жизни.
+
+</p>
+
+<br><br>
+
+<h3>📍 База отдыха «Чистый ключ»</h3>
+
+<br>
+
+<h3>🕑 Сбор гостей — 14:00</h3>
+
+<br><br>
+
+<h2>Программа</h2>
+
+<p class="text">
+
+🥂 Велком-зона<br><br>
+
+💍 Выездная регистрация<br><br>
+
+🍽️ Праздничный ужин<br><br>
+
+✨ Завершение вечера
+
+</p>
+
+<br><br>
+
+<button onclick="location.reload()">
+
+Вернуться
+
+</button>
+
+`;
 
 });

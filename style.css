@@ -165,3 +165,35 @@ max-width:320px;
 }
 
 }
+
+.gallery{
+    padding:100px 20px;
+    background:#faf8f5;
+    text-align:center;
+}
+
+.gallery h2{
+    font-size:42px;
+    margin-bottom:50px;
+    font-family:'Cormorant Garamond',serif;
+}
+
+.photos{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+.photos img{
+    width:100%;
+    border-radius:18px;
+    display:block;
+    box-shadow:0 15px 35px rgba(0,0,0,.15);
+    transition:.4s;
+}
+
+.photos img:hover{
+    transform:scale(1.03);
+}да

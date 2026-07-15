@@ -51,7 +51,48 @@
     text-align: center;
     color: var(--text);
     padding: 0 20px;
-    animation: fadeUp 1.8s ease-out;
+  }
+  
+  /* Intrigue text */
+  .hero-intrigue {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(2rem, 6vw, 4rem);
+    line-height: 1.3;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeInOut 6s ease-in-out;
+  }
+  
+  .hero-intrigue-line1 {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
+  .hero-intrigue-line2 {
+    display: block;
+    font-size: 0.7em;
+    opacity: 0.7;
+  }
+  
+  @keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(20px); }
+    15% { opacity: 1; transform: translateY(0); }
+    60% { opacity: 1; transform: translateY(0); }
+    85% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 0; transform: translateY(-20px); }
+  }
+  
+  /* Main reveal */
+  .hero-reveal {
+    opacity: 0;
+    animation: revealMain 1.8s ease-out 5.5s forwards;
+  }
+  
+  @keyframes revealMain {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
   }
   
   .hero-subtitle {
@@ -82,6 +123,21 @@
     margin: 0 0.3em;
   }
   
+  .hero-marriage {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-style: italic;
+    margin: 1.5rem 0 2rem;
+    color: var(--accent);
+    opacity: 0;
+    animation: fadeIn 1.2s ease-out 6.5s forwards;
+  }
+  
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+  
   .hero-date {
     font-family: 'Montserrat', sans-serif;
     font-weight: 200;
@@ -105,17 +161,14 @@
     background: transparent;
     cursor: pointer;
     transition: all 0.5s ease;
+    opacity: 0;
+    animation: fadeIn 1.2s ease-out 7s forwards;
   }
   
   .hero-btn:hover {
     background: var(--text);
     color: var(--white);
     letter-spacing: 0.35em;
-  }
-  
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(40px); }
-    to { opacity: 1; transform: translateY(0); }
   }
   
   .scroll-hint {
@@ -128,11 +181,13 @@
     letter-spacing: 0.3em;
     text-transform: uppercase;
     animation: bounce 2s infinite;
+    opacity: 0;
+    animation: bounce 2s infinite 7.5s forwards;
   }
   
   @keyframes bounce {
-    0%, 100% { transform: translateX(-50%) translateY(0); }
-    50% { transform: translateX(-50%) translateY(10px); }
+    0%, 100% { transform: translateX(-50%) translateY(0); opacity: 1; }
+    50% { transform: translateX(-50%) translateY(10px); opacity: 0.7; }
   }
   
   /* ===== SECTIONS ===== */
@@ -619,10 +674,20 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-content">
-    <div class="hero-subtitle">Наша свадьба</div>
-    <h1 class="hero-title">Данил <span class="hero-ampersand">&</span> Аня</h1>
-    <div class="hero-date">27 · 07 · 2027</div>
-    <a href="#welcome" class="hero-btn">Открыть приглашение</a>
+    <!-- Intrigue -->
+    <div class="hero-intrigue">
+      <span class="hero-intrigue-line1">Мы больше не встречаемся...</span>
+      <span class="hero-intrigue-line2">точнее, не просто встречаемся</span>
+    </div>
+    
+    <!-- Main reveal -->
+    <div class="hero-reveal">
+      <div class="hero-subtitle">Наша свадьба</div>
+      <h1 class="hero-title">Данил <span class="hero-ampersand">&</span> Аня</h1>
+      <div class="hero-marriage">Мы женимся!</div>
+      <div class="hero-date">27 · 07 · 2027</div>
+      <a href="#welcome" class="hero-btn">Открыть приглашение</a>
+    </div>
   </div>
   <div class="scroll-hint">↓</div>
 </section>
